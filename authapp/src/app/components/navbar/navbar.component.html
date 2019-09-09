@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Auth0App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['home']">Home </a>
+        <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['precios']">Precios</a>
+        <a class="nav-item nav-link" 
+        routerLinkActive="active" 
+        [routerLink]="['protegida']" 
+        *ngIf="auth.loggedIn">Protegida</a>
+      </div>
+    </div>
+    <span class="navbar-text">
+        <button class="btn btn-outline-primary" 
+        *ngIf="!auth.loggedIn" 
+        (click)="auth.login()">
+              Ingresar
+        </button>
+        <button class="btn btn-outline-danger" 
+        *ngIf="auth.loggedIn" 
+        (click)="auth.logout()">
+            Salir
+        </button>
+    </span>
+  </nav>
